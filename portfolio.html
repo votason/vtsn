@@ -39,6 +39,8 @@
       <main class="mdl-layout__content">
         <div class="site-content">
           <div id="blogposts" class="container">
+		  
+		  
 <section class="section--center mdl-grid site-max-width">
 <div class="notice mdl-card-wide site-max-width mdl-card mdl-shadow--4dp mdl-color--teal-400">
   <div class="mdl-card__title">
@@ -51,8 +53,11 @@
   
 </div>
 <div v-show="loading" id="p2loader" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
-<article v-for="post in postslist" class="post-item">
-  <header class="section__play-btn mdl-cell mdl-cell--4-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white  mdl-shadow--4dp">
+</section>
+
+
+<section v-for="post in postslist" class="section--center mdl-grid site-max-width">
+  <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white  mdl-shadow--4dp">
     <i class="material-icons">photo</i>
 	<img v-if="post.hasimg" class="article-image" :src="post.img" :alt="post.title" border="0">
   </header>
@@ -61,7 +66,8 @@
         <h2 class="mdl-card__title-text">{{ post.title }}</h2>
     </div>
     <div class="mdl-card__supporting-text">
-	<div class="golos-meta">Комментарии {{post.comments}} <div class="material-icons">comment</div>  Голосование 
+     
+<div class="golos-meta">Комментарии {{post.comments}} <div class="material-icons">comment</div>  Голосование 
 	  {{post.votes}} <div class="material-icons">trending_up</div> 
 	  {{post.reward}} <div class="material-icons">attach_money</div> 
 	   {{post.creward}} <div class="material-icons">group</div>
@@ -70,18 +76,27 @@
 	  
      
 	  <div class="postbody" v-if="post.expand" v-html="post.body"></div>
+	  
+	  
 	  <div v-for="comment in comments" v-if="post.expand" class="comment">
 	  <article><strong>{{comment.author}}</strong>
 	 <p>{{comment.body}}</p></article> 
 	 </div>
-</div>
+
+
+	</div>
     <div class="mdl-card__actions  mdl-card--border">
-      <button v-if="!post.expand" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" @click="post.expand = true">Читать</button> <a :href="post.link" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">@{{ post.author }}</a>
-	    <span class="tags">{{ post.tags }}</span>
-    </div>
+ <button v-if="!post.expand" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" @click="post.expand = true;showComm(post.plink)">Читать</button> <a :href="post.link" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">@{{ post.author }}</a>
+	    <span class="tags">{{ post.tags }}</span>     
+
+	 </div>
   </div>
-  </article>
 </section>
+
+
+
+
+
 </div>
         </div>
         <footer class="mdl-mini-footer">
