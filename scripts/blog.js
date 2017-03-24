@@ -40,7 +40,7 @@ steem.api.getDiscussionsByCreated({"tag":vblog.followTag,"limit":"3"}, function(
  }
 });
 steem.api.getContentReplies(vblog.login, vblog.replieLink, function(err, result) {
-console.log(result);
+
 	
 	for(var i = result.length;i--;)	{
     var r = result[i];
