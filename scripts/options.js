@@ -1,6 +1,6 @@
 var vblog={
         login:'vik',
-		replieLink:'free',
+		replieLink:'blogs',
 		followTag:'ru--otkrytyij-kod',
 
 };	
