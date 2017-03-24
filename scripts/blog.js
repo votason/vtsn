@@ -95,12 +95,16 @@ for (var i = 0; i < result.length; i++) {
 	if (typeof m.tags !=="undefined"){
 	var tags = m.tags[0];
 	for (t = 0; t < m.tags.length; t++) {tag += '#'+m.tags[t]+' '}}
+	
+	
+	
+	
 	 
 	 if (typeof m.image !== "undefined"){thumb = m.image[0],hasimg=true}else{hasimg=false}
 	 postslist.push({
 	  showModal: false,
 	  author: z.author,
-	  link: z.permlink,
+	  plink: z.permlink,
 	   title: z.title,
 	   comments:z.children,
 	   body: bodypost,
@@ -113,33 +117,76 @@ for (var i = 0; i < result.length; i++) {
 	   votes:z.net_votes,
 	   link:'https://golos.io/blog/@'+vblog.login+'/'+z.permlink
 	 })
-steem.api.getContentReplies(vblog.login, z.permlink, function(err, result) {
-		for(var i = result.length;i--;)	{
-			var r = result[i];
-			comm.push({
-			  author: r.author,
-			   body: r.body
-			   
-			 })
-			
-			 }
-		});
+	 
+	 
+
 }
+
+
 });	
+
+
+
 
 var blogpage = new Vue({
   el: '#blogposts',
   data: {
     postslist: postslist,
 	loading: true,
+	commlink: postslist,
 	comments: comm
 	
   },
+  methods: {
+    showComm: function (perm) {
+     console.log(perm);
+      steem.api.getContentReplies(vblog.login, perm, function(err, result) {
+	
+			for(var y = result.length;y--;)	{
+					var r = result[y];
+					comm.push({
+					  author: r.author,
+					   body: r.body
+					   
+					 })
+					
+					 }
+							 
+		});
+      
+      if (event) {
+        
+      }
+    }
+  },
   
   updated: function() {
-      this.loading = false
+      this.loading = false;
+	  
   }
     
   
 });
+
+
+
+
+
+
+
+
+
+var plink;
+function getComment(plink){
+	  
+	  
+
+}
+
+
+
+
+
+
+
 }
