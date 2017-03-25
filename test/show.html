@@ -31,7 +31,7 @@ steem.api.getContent('vik', 'encrypt', function(err, result) {
 
 function secretdata(){
 		  var pincode = document.getElementById("pincode").value,
-		  postsalt = document.location.href + pincode;
+		  postsalt = 'somepaswd' + pincode;
 		  showsecret = sjcl.decrypt(postsalt, secrettext);
 		  document.getElementById('xshow').insertAdjacentHTML('afterbegin', postsalt);
   }
