@@ -31,10 +31,11 @@ steem.api.getContent('vik', 'encrypt', function(err, result) {
 
 function secretdata(){
 		  var pincode = document.getElementById("pincode").value,
-		  postsalt = document.location.origin + pincode;
+		  postsalt = document.location.href + pincode;
 		  showsecret = sjcl.decrypt(postsalt, secrettext);
 		  document.getElementById('xshow').insertAdjacentHTML('afterbegin', showsecret);
   }
+ 
 
 </script>
 	<style>div#xshow { background: #11b265; color: white; padding: 10px; font-size: 12px; }div#xsecret { background: #ff3d3d; color: white; padding: 10px; }article#secretpost { max-width: 100%; overflow: hidden; padding: 4%; }article#secretpost img { max-width: 100%; height: auto; }</style>
@@ -86,6 +87,7 @@ function secretdata(){
       <p id="pinbutton">
           
       </p>
+	 
  
 </div></div>
               </div>
