@@ -127,7 +127,7 @@ jQuery( '#post-golos-form' ).on( 'submit', function(e) {
 			//Шифрование текста пинкодом и ссылкой в строке
 			secrettext = document.getElementById("etext").value;
 			pincode = document.getElementById("pincode").value;
-			postsalt = document.location.href + pincode;
+			postsalt = 'https://chain.cf/test/show.html' + pincode;
 			 encryptedpost = sjcl.encrypt(postsalt, secrettext);
 			
 			steem.api.getAccounts([u], function(err, result) {
