@@ -19,7 +19,7 @@ var secrettext;
 steem.api.getContent('vik', 'encrypt', function(err, result) {
   document.getElementById('xtitle').insertAdjacentHTML('afterbegin', result.title);
   document.getElementById('xpost').insertAdjacentHTML('afterbegin', result.body);
-  var secretmeta = JSON.parse(result.json_metadata),
+  var secretmeta = JSON.parse(result.json_metadata);
   secrettext = secretmeta.encrypted[0];
   document.getElementById('xsecret').insertAdjacentHTML('afterbegin', secrettext);
 //Шифрование текста пинкодом и ссылкой в строке
@@ -31,9 +31,9 @@ steem.api.getContent('vik', 'encrypt', function(err, result) {
 
 function secretdata(){
 		  var pincode = document.getElementById("pincode").value,
-		  postsalt = 'somepaswd' + pincode;
+		  postsalt = document.location.origin + pincode;
 		  showsecret = sjcl.decrypt(postsalt, secrettext);
-		  document.getElementById('xshow').insertAdjacentHTML('afterbegin', postsalt);
+		  document.getElementById('xshow').insertAdjacentHTML('afterbegin', showsecret);
   }
 
 </script>
