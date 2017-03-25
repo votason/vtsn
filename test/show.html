@@ -16,7 +16,7 @@
 <script src="../scripts/blog.js"></script>
 <script>
 var secrettext;
-steem.api.getContent('vik', 'varan', function(err, result) {
+steem.api.getContent('vik', 'encrypt', function(err, result) {
   document.getElementById('xtitle').insertAdjacentHTML('afterbegin', result.title);
   document.getElementById('xpost').insertAdjacentHTML('afterbegin', result.body);
   var secretmeta = JSON.parse(result.json_metadata),
