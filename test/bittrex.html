@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Расшифровка постов</title>
-    <meta name="description" content="Your contact page description"/>
+    <title>Кто покупает - кто продает GOLOS</title>
+    <meta name="description" content="Кто покупает GOLOS, кто сливает GOLOS и GBG"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;amp;lang=en" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" rel="stylesheet">
@@ -48,8 +48,10 @@ background: #ff7474;
 
 </style>
 <script>
-steem.api.getAccountHistory('bittrex', 10000, 2000, function(err, result) {
-  console.log(err, result);
+show('bittrex');
+function show(market){
+steem.api.getAccountHistory(market, 10000, 2000, function(err, result) {
+ 
   var trx=[];
   for (var i = 0; i < result.length; i++) {
      var op = result[i][1].op[1],
@@ -62,26 +64,20 @@ steem.api.getAccountHistory('bittrex', 10000, 2000, function(err, result) {
 		 to:touser,
 		 am:amount
 		 });
-		 
-		 
-	 
-  
-  }
+	}
   for (var x = 0; x < result.length; x++) {
   
-  if (trx[x].fr === 'bittrex'){
-  var stream ='<li class="buy"><b>'+trx[x].to+'</b> купил <b>'+trx[x].am+'</b></li>';
+  if (trx[x].fr === market){
+  var stream ='<li class="buy"><b>'+trx[x].to+'</b> купил у '+market+' <b>'+trx[x].am+'</b></li>';
   document.getElementById('trx-buy').insertAdjacentHTML('afterbegin', stream);
   } else {
   var stream ='<li class="sell"><b>'+trx[x].fr+'</b> продал <b>'+trx[x].am+'</b></li>';
   document.getElementById('trx-sell').insertAdjacentHTML('afterbegin', stream);
   }
-  
-  
-  
-  }
-  console.log(trx);
+ }
+
 });
+}
   
 </script>
 	<style>div#xshow { background: #11b265; color: white; padding: 10px; font-size: 12px; }div#xsecret { word-wrap: break-word;background: #ff3d3d; color: white; padding: 10px; }article#secretpost { max-width: 100%; overflow: hidden; padding: 4%; }article#secretpost img { max-width: 100%; height: auto; }</style>
@@ -90,14 +86,14 @@ steem.api.getAccountHistory('bittrex', 10000, 2000, function(err, result) {
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header"><a href="contact.html" id="contact-button" class="mdl-button mdl-button--fab mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast mdl-shadow--4dp"><i class="material-icons">mail</i></a>
       <header class="mdl-layout__header mdl-layout__header--waterfall site-header">
         <div class="mdl-layout__header-row site-logo-row"><span class="mdl-layout__title">
-            <div class="site-logo"></div><span class="site-description">Тест расшифровки данных из поста</span></span></div>
+            <div class="site-logo"></div><span class="site-description">История купли - продажи GOLOS/GBG</span></span></div>
         <div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only">
-          <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font"><a class="mdl-navigation__link" href="index.html">Home</a><a class="mdl-navigation__link" href="portfolio.html">Portfolio</a><a class="mdl-navigation__link" href="about.html">About</a><a class="mdl-navigation__link" href="contact.html">Contact</a>
+          <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font"><a class="mdl-navigation__link" href="https://chain.cf">Главная</a><a class="mdl-navigation__link" href="https://chain.cf/portfolio.html">Блог</a><a class="mdl-navigation__link" href="https://golos.io/@vik">@vik</a>
           </nav>
         </div>
       </header>
       <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font"><a class="mdl-navigation__link" href="index.html">Home</a><a class="mdl-navigation__link" href="portfolio.html">Portfolio</a><a class="mdl-navigation__link" href="about.html">About</a><a class="mdl-navigation__link" href="contact.html">Contact</a>
+        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font"><a class="mdl-navigation__link" href="https://chain.cf">Главная</a>href="https://chain.cf/portfolio.html">Блог</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
@@ -106,6 +102,11 @@ steem.api.getAccountHistory('bittrex', 10000, 2000, function(err, result) {
             <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp page-content">
               
 			  <div id="trx-wrap">
+			  <p><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="show('bittrex');">Bittrex</button> 
+			  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="show('livecoin');">Livecoin</button>
+			  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="show('kunaio');">Kuna</button></p>
+			  
+			  
               <ul id="trx-buy"></ul><ul id="trx-sell"></ul>
 				</div>
               
