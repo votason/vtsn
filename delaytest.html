@@ -184,7 +184,7 @@ setTimeout(delayPost, delay*1000*60)
 
 
 var timerDelay = setInterval(function(){postingTimer()}, 1000);	
-var timer = delay;
+var timer = delay*60;
 function postingTimer(){
 timer--;
 document.getElementById('timer').innerHTML = ('Пост будет опубликован через '+timer+' секунд');
