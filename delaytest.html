@@ -181,13 +181,21 @@ function delayPost() {
 					
 					}
 setTimeout(delayPost, delay*1000*60)
+
+
+var timerDelay = setInterval(function(){postingTimer()}, 1000);	
 var timer = delay;
-setInterval(function(){ 
+function postingTimer(){
 timer--;
-document.getElementById('timer').innerHTML = ('Пост будет опубликова через '+timer+' секунд');
- }, 1000);		
-					
-					
+document.getElementById('timer').innerHTML = ('Пост будет опубликован через '+timer+' секунд');
+if (timer === 0){
+clearInterval(timerDelay);
+document.getElementById('timer').innerHTML = ('Пост отправлен');
+}	
+}
+
+
+	
 		});			
 });
 
