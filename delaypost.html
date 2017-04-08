@@ -40,8 +40,7 @@
  Например - <em>golos.io/ru--golos/@vik/testpost</em>. В данной ссылке ru--golos - это транслит тега Голос, а testpost постоянная ссылка на пост. В классическом клиенте голоса ссылка формируется автоматически из заголовка поста, длинная, уродливая версия вашего заголовка в транслите, в моем редакторе вы должны сами придумать ссылку - лаконичную и удобную. </b>
  
 <p><input type="text" id="delay" name="delay" placeholder="Отсрочка в минутах" pattern="[0-9]+"></p> 
-<b>Что бы пост был размещен с отсрочкой - не закрывайте эту страницу пока не пройдет указанный срок отсрочки!</b>
-	<b>Ниже указаны поля только для 4-х тегов, вместо привычных 5. Это обусловлено тем, что первый тег является топиком и он указан выше. Это сделано для того, что бы автор наглядно мог формировать конечную ссылку на свой пост, которая выгдядит как golos.io/топик/@имя/ссылка</b>
+<h3>Что бы пост был размещен с отсрочкой - не закрывайте эту страницу пока не пройдет указанный срок отсрочки!</h3>
 <p> <input type="text" id="tag1" name="tag1" placeholder="Тег 1" pattern="[a-z0-9-]+">
 <input type="text" id="tag2" name="tag2"  placeholder="Тег 2" pattern="[a-z0-9-]+">
 <input type="text" id="tag3" name="tag3"  placeholder="Тег 3" pattern="[a-z0-9-]+">
@@ -49,6 +48,7 @@
 		<input type="submit" value="Отправить">
 </form>
 <div id="alerts"></div>
+<div id="timer"></div>
 </div>
 
 <script>
@@ -181,9 +181,21 @@ function delayPost() {
 					
 					}
 setTimeout(delayPost, delay*1000*60)
-			
-					
-					
+
+
+var timerDelay = setInterval(function(){postingTimer()}, 1000);	
+var timer = delay*60;
+function postingTimer(){
+timer--;
+document.getElementById('timer').innerHTML = ('Пост будет опубликован через '+timer+' секунд');
+if (timer === 0){
+clearInterval(timerDelay);
+document.getElementById('timer').innerHTML = ('Пост отправлен');
+}	
+}
+
+
+	
 		});			
 });
 
