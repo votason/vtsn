@@ -25,7 +25,7 @@ h2 {
 <h2>Безопасное встраивание скриптов из непроверенных источников</h2>
 
   
-<iframe src="https://chain.chatbro.com/" sandbox></iframe>
+<iframe src="https://chain.chatbro.com/" sandbox="allow-same-origin || allow-top-navigation || allow-forms"></iframe>
 <h3>Чат встроен c помощью inline iframe</h3>
  <pre> &lt;iframe src="https://chain.chatbro.com/" sandbox="allow-same-origin || allow-top-navigation || allow-forms || allow-scripts" &gt;&lt;/iframe>&lt;/pr&gt;</pre>
 <p>Если нужно встроить чат с заданными параметрами - можно разместить JS инициализации чата на своем домене отличном от домена биржи и не на сабдомене, далее добавить адрес на страницу чата как в примере выше.</p>
