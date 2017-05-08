@@ -3,11 +3,40 @@
 <head>
 <meta charset="utf-8"/>
 <title>Безопасные 3rd скрипты</title>
+<style>
+ iframe {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    min-height: 250px;
+    border: 0;
+}
+body {
+    background: #0a0a0a;
+    color: white;
+    font-family: arial;
+}
+h2 {
+    text-align: center;
+}
+</style>
 </head>
 <body>
 <h2>Безопасное встраивание скриптов из непроверенных источников</h2>
-<b>Inline iframe</b>
-<iframe src="https://chain.chatbro.com/"></iframe>
 
+  
+<iframe src="https://chain.chatbro.com/" sandbox="allow-same-origin || allow-top-navigation || allow-forms || allow-scripts"></iframe>
+<h3>Чат встроен c помощью inline iframe</h3>
+<pre> <iframe src="https://chain.chatbro.com/"></iframe></pre>
+<p>Если нужно встроить чат с заданными параметрами - можно разместить JS инициализации чата на своем домене отличном от домена биржи и не на сабдомене, далее добавить адрес на страницу чата как в примере выше.</p>
+<p>Например можно просто создать бесплатный html хостинг на github, создать index.html с инициализированным чатом, а далее вставить с помощью
+  inline iframe с адресом репозитория блок на биржу</p>
+  
+  <h3>Безопасность</h3> 
+  <article>
+    
+    
+  </article> 
+  
 </body>
 </html>
