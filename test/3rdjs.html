@@ -23,9 +23,11 @@ h2 {
 </head>
 <body>
 <h2>Безопасное встраивание скриптов из непроверенных источников</h2>
-
+ <p>Метод базируется на том, что браузер не даст украсть данные скрипту если он загружен в рамках iframe содержимое которого находится 
+ на отдельном домене. В сочетании с iframe SANDBOX и правильно настроенными CSP политиками на вашем домене метод делает встраивание библиотек из
+ третьих источников безопасным</p>
   
-<iframe src="https://chain.chatbro.com/" sandbox="allow-forms allow-scripts"></iframe>
+<iframe src="https://chain.chatbro.com/" sandbox="allow-forms allow-scripts allow-same-origin"></iframe>
 <h3>Чат встроен c помощью inline iframe</h3>
  <pre> &lt;iframe src="https://chain.chatbro.com/" sandbox="allow-same-origin || allow-top-navigation || allow-forms || allow-scripts" &gt;&lt;/iframe>&lt;/pr&gt;</pre>
 <p>Если нужно встроить чат с заданными параметрами - можно разместить JS инициализации чата на своем домене отличном от домена биржи и не на сабдомене, далее добавить адрес на страницу чата как в примере выше.</p>
