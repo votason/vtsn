@@ -93,11 +93,9 @@ padding:0;
   <script>
   "use strict";
   var index = 0;
-  var	$main_color = '#2d313f',
-		$saturation= -30,
-		$brightness= 2;
+ 
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 3,
+      zoom: 5,
       center: new google.maps.LatLng(50.0593325,14.1854451),
       panControl: false,
       	
@@ -105,175 +103,125 @@ padding:0;
       	streetViewControl: false,
       	mapTypeId: google.maps.MapTypeId.ROADMAP,
       	scrollwheel: false,
-		styles:  [ 
-		{
-			
-			elementType: "labels",
-			stylers: [
-				{saturation: $saturation}
-			]
-		},  
-	    {	featureType: "poi",
-			elementType: "labels",
-			stylers: [
-				{visibility: "off"}
-			]
-		},
-		{
-			 featureType: 'road.highway',
-	        elementType: 'labels',
-	        stylers: [
-	            {visibility: "off"}
-	        ]
-	    }, 
-		{ 	
-			featureType: "road.local", 
-			elementType: "labels.icon", 
-			stylers: [
-				{visibility: "off"} 
-			] 
-		},
-		{ 
-			featureType: "road.arterial", 
-			elementType: "labels.icon", 
-			stylers: [
-				{visibility: "off"}
-			] 
-		},
-		{
-			featureType: "road",
-			elementType: "geometry.stroke",
-			stylers: [
-				{visibility: "off"}
-			]
-		}, 
-		
-		{ 
-			featureType: "transit", 
-			elementType: "geometry.fill", 
-			stylers: [
-				{ hue: $main_color },
-				{ visibility: "on" }, 
-				{ lightness: $brightness }, 
-				{ saturation: $saturation }
-			]
-		}, 
-		{
-			featureType: "poi",
-			elementType: "geometry.fill",
-			stylers: [
-				{ hue: $main_color },
-				{ visibility: "on" }, 
-				{ lightness: $brightness }, 
-				{ saturation: $saturation }
-			]
-		},
-		{
-			featureType: "poi.government",
-			elementType: "geometry.fill",
-			stylers: [
-				{ hue: $main_color },
-				{ visibility: "on" }, 
-				{ lightness: $brightness }, 
-				{ saturation: $saturation }
-			]
-		},
-		{
-			featureType: "poi.sport_complex",
-			elementType: "geometry.fill",
-			stylers: [
-				{ hue: $main_color },
-				{ visibility: "on" }, 
-				{ lightness: $brightness }, 
-				{ saturation: $saturation }
-			]
-		},
-		{
-			featureType: "poi.attraction",
-			elementType: "geometry.fill",
-			stylers: [
-				{ hue: $main_color },
-				{ visibility: "on" }, 
-				{ lightness: $brightness }, 
-				{ saturation: $saturation }
-			]
-		},
-		{
-			featureType: "poi.business",
-			elementType: "geometry.fill",
-			stylers: [
-				{ hue: $main_color },
-				{ visibility: "on" }, 
-				{ lightness: $brightness }, 
-				{ saturation: $saturation }
-			]
-		},
-		{
-			featureType: "transit",
-			elementType: "geometry.fill",
-			stylers: [
-				{ hue: $main_color },
-				{ visibility: "on" }, 
-				{ lightness: $brightness }, 
-				{ saturation: $saturation }
-			]
-		},
-		{
-			featureType: "transit.station",
-			elementType: "geometry.fill",
-			stylers: [
-				{ hue: $main_color },
-				{ visibility: "on" }, 
-				{ lightness: $brightness }, 
-				{ saturation: $saturation }
-			]
-		},
-		{
-			featureType: "landscape",
-			stylers: [
-				{ hue: $main_color },
-				{ visibility: "on" }, 
-				{ lightness: $brightness }, 
-				{ saturation: $saturation }
-			]
-			
-		},
-		{
-			featureType: "road",
-			elementType: "geometry.fill",
-			stylers: [
-				{ hue: $main_color },
-				{ visibility: "on" }, 
-				{ lightness: $brightness }, 
-				{ saturation: $saturation }
-			]
-		},
-		{
-			featureType: "road.highway",
-			elementType: "geometry.fill",
-			stylers: [
-				{ hue: $main_color },
-				{ visibility: "on" }, 
-				{ lightness: $brightness }, 
-				{ saturation: $saturation }
-			]
-		}, 
-		{
-			featureType: "water",
-			elementType: "geometry",
-			stylers: [
-				{ hue: $main_color },
-				{ visibility: "on" }, 
-				{ lightness: $brightness }, 
-				{ saturation: $saturation }
-			]
-		}
-	]
+		styles:  [
+    {
+        "featureType": "water",
+        "stylers": [
+            {
+                "color": "#0e171d"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "stylers": [
+            {
+                "color": "#1e303d"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "stylers": [
+            {
+                "color": "#1e303d"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "stylers": [
+            {
+                "color": "#1e303d"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "stylers": [
+            {
+                "color": "#182731"
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "color": "#f0c514"
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "color": "#1e303d"
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#e77e24"
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#FFFFFF"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    }
+]
 	  
     });
 
-    var infowindow = new google.maps.InfoWindow({
-      maxWidth: 160
+ var infowindow =  new google.maps.InfoWindow({
+        content: "",
+		maxWidth: 220
     });
 
     
@@ -282,130 +230,15 @@ padding:0;
             }, 200); }
    
 
-var locat = []
-var POSTCOUNT = 0;
-var item = [];
-var LATEST_POSTS = new Promise(function (resolve, reject) {
-	steem.api.getDiscussionsByCreated({"select_tags":["mapala"], "limit": 100 }, function (err, posts) {
-		if (err) {
-			reject(err);
-		} else {
-			resolve(posts);
-			
-		}
-	});
-});
-
-var NEXT_POSTS = function NEXT_POSTS(nextset) {
-	steem.api.getDiscussionsByCreated({ "start_permlink": nextset.start_permlink, "start_author": nextset.start_author, "select_tags":["mapala"], "limit": 10 }, function (err, oldposts) {
-		if (err) {
-			console.log(err);
-		}
-
-		var len = oldposts.length;
-		var i = 0;
-
-		
-
-		var _iteratorNormalCompletion = true;
-		var _didIteratorError = false;
-		var _iteratorError = undefined;
-
-		try {
-			for (var _iterator = oldposts[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-				var post = _step.value;
-				
-				
-				
-				var meta = JSON.parse(post.json_metadata);
-				if (typeof meta.coordinates !== "undefined" && meta.coordinates.length > 10) {
-					var markers = new Array();
-					var logo = "http://i.imgur.com/IyCw18s.png";
-					var coord = meta.coordinates;
-					var lon = coord.substring(0, coord.indexOf(','));
-					var lan = coord.substring(coord.indexOf(',')).substring(1);
-					var imgpost = (typeof meta.image === 'undefined') ? logo : meta.image[0];
-					var markercontent = '<h4>'+post.title+'</h4><p>'+meta.location+'</p><h3>'+post.total_payout_value+'/'+post.total_pending_payout_value+'</h3><img style="width:100%;height:auto;" src="'+imgpost+'"/><p><p><a href="https://mapala.net/'+post.author+'/'+post.permlink+'">Читать на MAPALA</a></p>'+post.body.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 100)+'</p>';
-					var putHtml = '<div class="item"><b>'+post.title+'</b><p>'+meta.location+'</p><h3>'+post.total_pending_payout_value+'/'+post.total_payout_value+'</h3><img width="200" src="'+imgpost+'"/> <p><a href="https://mapala.net/'+post.author+'/'+post.permlink+'">Читать на MAPALA</a></p><p>'+post.body.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 100)+'</p></div>';
-					/////////
-						
-					
-					
-							var marker = new google.maps.Marker({
-								position: new google.maps.LatLng(lon, lan),
-								map: map,
-								icon: 'https://chain.cf/img/mapalamarker.png'
-							});
-							var infowindow = new google.maps.InfoWindow({
-								
-								content: markercontent
-							});
-							document.getElementById('side').insertAdjacentHTML('afterbegin', putHtml);
-							itemShow();
-							//markers.push(marker);		
-								itemShow();
-					index++;
-					
-					
-					
-					
-					google.maps.event.addListener(marker, 'click', (function(marker) {
-						return function() {
-											infowindow.open(map, marker);
-											}
-									})(marker));
-					
-					
-					/////////
-				}
-				if (i == len - 1) {
-					nextset.start_permlink = post.permlink;
-					nextset.start_author = post.author;
-					if (len > 1) {
-						NEXT_POSTS(nextset);
-					} else {
-						// Последний пост
-					}
-				}
-				i++;
-			}
-		} catch (err) {
-			_didIteratorError = true;
-			_iteratorError = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion && _iterator["return"]) {
-					_iterator["return"]();
-				}
-			} finally {
-				if (_didIteratorError) {
-					throw _iteratorError;
-				}
-			}
-		}
-	});
-};
-
-var POSTS_FILTER = function POSTS_FILTER(posts) {
-	var nextset = {
-		start_permlink: '',
-		start_author: ''
-	};
-
-	var len = posts.length;
-	var i = 0;
-
-	
-
-	var _iteratorNormalCompletion2 = true;
-	var _didIteratorError2 = false;
-	var _iteratorError2 = undefined;
-
-	try {
-		for (var _iterator2 = posts[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-			var post = _step2.value;
-
-			var meta = JSON.parse(post.json_metadata);
+var marker;
+function NEXT_POSTS(nextset) {
+steem.api.getDiscussionsByCreated({ "start_permlink": nextset.start_permlink, "start_author": nextset.start_author, "select_tags":["mapala"], "limit": 30 }, function (err, post) {
+	var len = post.length;	
+	var lst = len - 1;
+	var marker;
+	var i;
+	for (i = 0;  i < len; i++) { 
+			var meta = JSON.parse(post[i].json_metadata);
 			if (typeof meta.coordinates !== "undefined" && meta.coordinates.length > 10) {
 				var markers = new Array();
 					var logo = "http://i.imgur.com/IyCw18s.png";
@@ -413,68 +246,117 @@ var POSTS_FILTER = function POSTS_FILTER(posts) {
 					var lon = coord.substring(0, coord.indexOf(','));
 					var lan = coord.substring(coord.indexOf(',')).substring(1);
 					var imgpost = (typeof meta.image === 'undefined') ? logo : meta.image[0];
-					var markercontent = '<h4>'+post.title+'</h4><p>'+meta.location+'</p><h3>'+post.total_payout_value+'/'+post.total_pending_payout_value+'</h3><img style="width:100%;height:auto;" src="'+imgpost+'"/><p><p><a href="https://mapala.net/'+post.author+'/'+post.permlink+'">Читать на MAPALA</a></p>'+post.body.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 100)+'</p>';
-					var putHtml = '<div class="item"><b>'+post.title+'</b><p>'+meta.location+'</p><h3>'+post.total_pending_payout_value+'/'+post.total_payout_value+'</h3><img width="200" src="'+imgpost+'"/> <p><a href="https://mapala.net/'+post.author+'/'+post.permlink+'">Читать на MAPALA</a></p><p>'+post.body.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 100)+'</p></div>';
-					/////////
+					var markercontent = '<h4>'+post[i].title+'</h4><p>'+meta.location+'</p><h3>'+post[i].total_payout_value+'/'+post[i].total_pending_payout_value+'</h3><img style="width:100%;height:auto;" src="'+imgpost+'"/><p><p><a href="https://mapala.net/'+post[i].author+'/'+post[i].permlink+'">Читать на MAPALA</a></p>'+post[i].body.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 100)+'</p>';
+					var putHtml = '<div class="item"><b>'+post[i].title+'</b><p>'+meta.location+'</p><h3>'+post[i].total_pending_payout_value+'/'+post[i].total_payout_value+'</h3><img width="200" src="'+imgpost+'"/> <p><a href="https://mapala.net/'+post[i].author+'/'+post[i].permlink+'">Читать на MAPALA</a></p><p>'+post[i].body.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 100)+'</p></div>';
 						
 					
 					
-							var marker = new google.maps.Marker({
+							marker = new google.maps.Marker({
 								position: new google.maps.LatLng(lon, lan),
 								map: map,
 								icon: 'https://chain.cf/img/mapalamarker.png'
 							});
-							var infowindow = new google.maps.InfoWindow({
-								
-								content: markercontent
-							});
-							document.getElementById('side').insertAdjacentHTML('afterbegin', putHtml);
-							//markers.push(marker);		
-								itemShow();
-					index++;
+							
+					bindInfoWindow(marker, map, infowindow, markercontent, putHtml);
+					
+							
 					
 					
-					
-					
-					google.maps.event.addListener(marker, 'click', (function(marker) {
-						return function() {
-											infowindow.open(map, marker);
-											}
-									})(marker));
-					
-					
-					/////////
 			}
-			if (i == len - 1) {
-				nextset.start_permlink = post.permlink;
-				nextset.start_author = post.author;
+			if (i == lst) {
+				nextset = {
+				start_permlink:post[lst].permlink,
+				start_author:post[lst].author
+				}
+				if (len > 1) {
+						NEXT_POSTS(nextset);
+					} else {
+						console.log("Загружены все посты")
+				}
+				
+			}
+			
+			
+			
+		}
+
+
+
+		
+	if (err) {
+			console.log(err);
+		}	
+		
+	});	
+};
+
+
+
+var nextset = {
+		start_permlink: '',
+		start_author: ''
+	};
+
+	
+steem.api.getDiscussionsByCreated({"select_tags":["mapala"], "limit": 30 }, function (err, post) {
+	var len = post.length;	
+	var lst = len - 1;
+	var i;
+	for (i = 0;  i < len; i++) { 
+			var meta = JSON.parse(post[i].json_metadata);
+			if (typeof meta.coordinates !== "undefined" && meta.coordinates.length > 10) {
+				var markers = new Array();
+					var logo = "http://i.imgur.com/IyCw18s.png";
+					var coord = meta.coordinates;
+					var lon = coord.substring(0, coord.indexOf(','));
+					var lan = coord.substring(coord.indexOf(',')).substring(1);
+					var imgpost = (typeof meta.image === 'undefined') ? logo : meta.image[0];
+					var markercontent = '<h4>'+post[i].title+'</h4><p>'+meta.location+'</p><h3>'+post[i].total_payout_value+'/'+post[i].total_pending_payout_value+'</h3><img style="width:100%;height:auto;" src="'+imgpost+'"/><p><p><a href="https://mapala.net/'+post[i].author+'/'+post[i].permlink+'">Читать на MAPALA</a></p>'+post[i].body.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 100)+'</p>';
+					var putHtml = '<div class="item"><b>'+post[i].title+'</b><p>'+meta.location+'</p><h3>'+post[i].total_pending_payout_value+'/'+post[i].total_payout_value+'</h3><img width="200" src="'+imgpost+'"/> <p><a href="https://mapala.net/'+post[i].author+'/'+post[i].permlink+'">Читать на MAPALA</a></p><p>'+post[i].body.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 100)+'</p></div>';
+							
+							marker = new google.maps.Marker({
+								position: new google.maps.LatLng(lon, lan),
+								map: map,
+								icon: 'https://chain.cf/img/mapalamarker.png'
+							});
+							
+							bindInfoWindow(marker, map, infowindow, markercontent, putHtml);
+						
+								
+					
+					
+			}
+			if (i == lst) {
+				nextset = {
+				start_permlink:post[lst].permlink,
+				start_author:post[lst].author
+				}
 				NEXT_POSTS(nextset);
 			}
-			i++;
-		}
-	} catch (err) {
-		_didIteratorError2 = true;
-		_iteratorError2 = err;
-	} finally {
-		try {
-			if (!_iteratorNormalCompletion2 && _iterator2["return"]) {
-				_iterator2["return"]();
-			}
-		} finally {
-			if (_didIteratorError2) {
-				throw _iteratorError2;
-			}
-		}
-	}
-};
-LATEST_POSTS.then(POSTS_FILTER)["catch"](function (e) {
-	return console.log(e);
+			
+			
+		};
+
+
+
+		
+	if (err) {
+			console.log(err);
+		}	
 });
 	  
+	 
+
 	  
-	  
-	  
-	  
+function bindInfoWindow(marker, map, infowindow, markercontent, putHtml) {
+	document.getElementById('side').insertAdjacentHTML('afterbegin', putHtml);
+					itemShow();
+	
+    marker.addListener('click', function() {
+        infowindow.setContent(markercontent);
+        infowindow.open(map, this);
+    });
+}  
 	  
     </script>
 
