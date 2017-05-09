@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>Вся MAPALA на карте</title>
+<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+<style>
+body{margin:0;padding:0;font-family: 'Comfortaa', cursive;color:#333;}
+#side::-webkit-scrollbar {
+    width: .5em;
+    height: .5em
+}
+#side::-webkit-scrollbar-button {
+    background: #ccc
+}
+#side::-webkit-scrollbar-track-piece {
+    background: #888
+}
+#side::-webkit-scrollbar-thumb {
+    background: #eee
+}
+#side {
+    width: 30%;
+	position: absolute;
+    left:0;
+	top:0;
+    padding:0;
+	height:100%;
+	overflow:auto;
+}
+
+
+#side .item {
+   background: white;
+    padding: 15px;
+    box-shadow: 0 5px 20px -5px black;
+    margin: 20px;
+    border-radius: 3px;
+    font-size: 9pt;
+	overflow:hidden;
+	transition:1s all ease;
+	transform:translate3d(0px, -100px, 0px);
+	position:absolute;
+	opacity:0;
+	
+}
+#side .item.anim{
+	transform:translate3d(0px, 0px, 0px);
+	opacity:1;
+	transition:1s all ease;
+	position:relative;
+}
+
+
+.item img{
+display:block;
+width:100%;
+max-width:100%;
+height:auto
+}
+#map{
+display:inline-block;
+width:100%;
+height:100%;
+}
+section{
+width:100%
+display:block;
+height:100vh;
+
+overflow:hidden;
+margin:0;
+padding:0;
+}
+
+</style>
+<script>var indexPage=false,isBlog=false;</script>
+<script src="https://chain.cf/scripts/blog.js"></script>
+<script src="https:/maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
+    
+  </head>
+  <body>
+   <section>
+   <div id="map"></div>
+   <div id="side">
+   
+ Загрузка...
+   </div>
+   <section>
+  
+  <script>
+  "use strict";
+  var index = 0;
+  var	$main_color = '#2d313f',
+		$saturation= -30,
+		$brightness= 2;
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 3,
+      center: new google.maps.LatLng(50.0593325,14.1854451),
+      panControl: false,
+      	
+      	mapTypeControl: false,
+      	streetViewControl: false,
+      	mapTypeId: google.maps.MapTypeId.ROADMAP,
+      	scrollwheel: false,
+		styles:  [ 
+		{
+			
+			elementType: "labels",
+			stylers: [
+				{saturation: $saturation}
+			]
+		},  
+	    {	featureType: "poi",
+			elementType: "labels",
+			stylers: [
+				{visibility: "off"}
+			]
+		},
+		{
+			 featureType: 'road.highway',
+	        elementType: 'labels',
+	        stylers: [
+	            {visibility: "off"}
+	        ]
+	    }, 
+		{ 	
+			featureType: "road.local", 
+			elementType: "labels.icon", 
+			stylers: [
+				{visibility: "off"} 
+			] 
+		},
+		{ 
+			featureType: "road.arterial", 
+			elementType: "labels.icon", 
+			stylers: [
+				{visibility: "off"}
+			] 
+		},
+		{
+			featureType: "road",
+			elementType: "geometry.stroke",
+			stylers: [
+				{visibility: "off"}
+			]
+		}, 
+		
+		{ 
+			featureType: "transit", 
+			elementType: "geometry.fill", 
+			stylers: [
+				{ hue: $main_color },
+				{ visibility: "on" }, 
+				{ lightness: $brightness }, 
+				{ saturation: $saturation }
+			]
+		}, 
+		{
+			featureType: "poi",
+			elementType: "geometry.fill",
+			stylers: [
+				{ hue: $main_color },
+				{ visibility: "on" }, 
+				{ lightness: $brightness }, 
+				{ saturation: $saturation }
+			]
+		},
+		{
+			featureType: "poi.government",
+			elementType: "geometry.fill",
+			stylers: [
+				{ hue: $main_color },
+				{ visibility: "on" }, 
+				{ lightness: $brightness }, 
+				{ saturation: $saturation }
+			]
+		},
+		{
+			featureType: "poi.sport_complex",
+			elementType: "geometry.fill",
+			stylers: [
+				{ hue: $main_color },
+				{ visibility: "on" }, 
+				{ lightness: $brightness }, 
+				{ saturation: $saturation }
+			]
+		},
+		{
+			featureType: "poi.attraction",
+			elementType: "geometry.fill",
+			stylers: [
+				{ hue: $main_color },
+				{ visibility: "on" }, 
+				{ lightness: $brightness }, 
+				{ saturation: $saturation }
+			]
+		},
+		{
+			featureType: "poi.business",
+			elementType: "geometry.fill",
+			stylers: [
+				{ hue: $main_color },
+				{ visibility: "on" }, 
+				{ lightness: $brightness }, 
+				{ saturation: $saturation }
+			]
+		},
+		{
+			featureType: "transit",
+			elementType: "geometry.fill",
+			stylers: [
+				{ hue: $main_color },
+				{ visibility: "on" }, 
+				{ lightness: $brightness }, 
+				{ saturation: $saturation }
+			]
+		},
+		{
+			featureType: "transit.station",
+			elementType: "geometry.fill",
+			stylers: [
+				{ hue: $main_color },
+				{ visibility: "on" }, 
+				{ lightness: $brightness }, 
+				{ saturation: $saturation }
+			]
+		},
+		{
+			featureType: "landscape",
+			stylers: [
+				{ hue: $main_color },
+				{ visibility: "on" }, 
+				{ lightness: $brightness }, 
+				{ saturation: $saturation }
+			]
+			
+		},
+		{
+			featureType: "road",
+			elementType: "geometry.fill",
+			stylers: [
+				{ hue: $main_color },
+				{ visibility: "on" }, 
+				{ lightness: $brightness }, 
+				{ saturation: $saturation }
+			]
+		},
+		{
+			featureType: "road.highway",
+			elementType: "geometry.fill",
+			stylers: [
+				{ hue: $main_color },
+				{ visibility: "on" }, 
+				{ lightness: $brightness }, 
+				{ saturation: $saturation }
+			]
+		}, 
+		{
+			featureType: "water",
+			elementType: "geometry",
+			stylers: [
+				{ hue: $main_color },
+				{ visibility: "on" }, 
+				{ lightness: $brightness }, 
+				{ saturation: $saturation }
+			]
+		}
+	]
+	  
+    });
+
+    var infowindow = new google.maps.InfoWindow({
+      maxWidth: 160
+    });
+
+    
+   function itemShow(){setTimeout(function() {
+                document.querySelector(".item").classList.add('anim');
+            }, 200); }
+   
+
+var locat = []
+var POSTCOUNT = 0;
+var item = [];
+var LATEST_POSTS = new Promise(function (resolve, reject) {
+	steem.api.getDiscussionsByCreated({"select_tags":["mapala"], "limit": 100 }, function (err, posts) {
+		if (err) {
+			reject(err);
+		} else {
+			resolve(posts);
+			
+		}
+	});
+});
+
+var NEXT_POSTS = function NEXT_POSTS(nextset) {
+	steem.api.getDiscussionsByCreated({ "start_permlink": nextset.start_permlink, "start_author": nextset.start_author, "select_tags":["mapala"], "limit": 10 }, function (err, oldposts) {
+		if (err) {
+			console.log(err);
+		}
+
+		var len = oldposts.length;
+		var i = 0;
+
+		
+
+		var _iteratorNormalCompletion = true;
+		var _didIteratorError = false;
+		var _iteratorError = undefined;
+
+		try {
+			for (var _iterator = oldposts[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+				var post = _step.value;
+				
+				
+				
+				var meta = JSON.parse(post.json_metadata);
+				if (typeof meta.coordinates !== "undefined" && meta.coordinates.length > 10) {
+					var markers = new Array();
+					var logo = "http://i.imgur.com/IyCw18s.png";
+					var coord = meta.coordinates;
+					var lon = coord.substring(0, coord.indexOf(','));
+					var lan = coord.substring(coord.indexOf(',')).substring(1);
+					var imgpost = (typeof meta.image === 'undefined') ? logo : meta.image[0];
+					var markercontent = '<h4>'+post.title+'</h4><p>'+meta.location+'</p><h3>'+post.total_payout_value+'/'+post.total_pending_payout_value+'</h3><img style="width:100%;height:auto;" src="'+imgpost+'"/><p><p><a href="https://mapala.net/'+post.author+'/'+post.permlink+'">Читать на MAPALA</a></p>'+post.body.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 100)+'</p>';
+					var putHtml = '<div class="item"><b>'+post.title+'</b><p>'+meta.location+'</p><h3>'+post.total_pending_payout_value+'/'+post.total_payout_value+'</h3><img width="200" src="'+imgpost+'"/> <p><a href="https://mapala.net/'+post.author+'/'+post.permlink+'">Читать на MAPALA</a></p><p>'+post.body.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 100)+'</p></div>';
+					/////////
+						
+					
+					
+							var marker = new google.maps.Marker({
+								position: new google.maps.LatLng(lon, lan),
+								map: map,
+								icon: 'https://chain.cf/img/mapalamarker.png'
+							});
+							var infowindow = new google.maps.InfoWindow({
+								
+								content: markercontent
+							});
+							document.getElementById('side').insertAdjacentHTML('afterbegin', putHtml);
+							itemShow();
+							//markers.push(marker);		
+								itemShow();
+					index++;
+					
+					
+					
+					
+					google.maps.event.addListener(marker, 'click', (function(marker) {
+						return function() {
+											infowindow.open(map, marker);
+											}
+									})(marker));
+					
+					
+					/////////
+				}
+				if (i == len - 1) {
+					nextset.start_permlink = post.permlink;
+					nextset.start_author = post.author;
+					if (len > 1) {
+						NEXT_POSTS(nextset);
+					} else {
+						// Последний пост
+					}
+				}
+				i++;
+			}
+		} catch (err) {
+			_didIteratorError = true;
+			_iteratorError = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion && _iterator["return"]) {
+					_iterator["return"]();
+				}
+			} finally {
+				if (_didIteratorError) {
+					throw _iteratorError;
+				}
+			}
+		}
+	});
+};
+
+var POSTS_FILTER = function POSTS_FILTER(posts) {
+	var nextset = {
+		start_permlink: '',
+		start_author: ''
+	};
+
+	var len = posts.length;
+	var i = 0;
+
+	
+
+	var _iteratorNormalCompletion2 = true;
+	var _didIteratorError2 = false;
+	var _iteratorError2 = undefined;
+
+	try {
+		for (var _iterator2 = posts[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+			var post = _step2.value;
+
+			var meta = JSON.parse(post.json_metadata);
+			if (typeof meta.coordinates !== "undefined" && meta.coordinates.length > 10) {
+				var markers = new Array();
+					var logo = "http://i.imgur.com/IyCw18s.png";
+					var coord = meta.coordinates;
+					var lon = coord.substring(0, coord.indexOf(','));
+					var lan = coord.substring(coord.indexOf(',')).substring(1);
+					var imgpost = (typeof meta.image === 'undefined') ? logo : meta.image[0];
+					var markercontent = '<h4>'+post.title+'</h4><p>'+meta.location+'</p><h3>'+post.total_payout_value+'/'+post.total_pending_payout_value+'</h3><img style="width:100%;height:auto;" src="'+imgpost+'"/><p><p><a href="https://mapala.net/'+post.author+'/'+post.permlink+'">Читать на MAPALA</a></p>'+post.body.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 100)+'</p>';
+					var putHtml = '<div class="item"><b>'+post.title+'</b><p>'+meta.location+'</p><h3>'+post.total_pending_payout_value+'/'+post.total_payout_value+'</h3><img width="200" src="'+imgpost+'"/> <p><a href="https://mapala.net/'+post.author+'/'+post.permlink+'">Читать на MAPALA</a></p><p>'+post.body.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 100)+'</p></div>';
+					/////////
+						
+					
+					
+							var marker = new google.maps.Marker({
+								position: new google.maps.LatLng(lon, lan),
+								map: map,
+								icon: 'https://chain.cf/img/mapalamarker.png'
+							});
+							var infowindow = new google.maps.InfoWindow({
+								
+								content: markercontent
+							});
+							document.getElementById('side').insertAdjacentHTML('afterbegin', putHtml);
+							//markers.push(marker);		
+								itemShow();
+					index++;
+					
+					
+					
+					
+					google.maps.event.addListener(marker, 'click', (function(marker) {
+						return function() {
+											infowindow.open(map, marker);
+											}
+									})(marker));
+					
+					
+					/////////
+			}
+			if (i == len - 1) {
+				nextset.start_permlink = post.permlink;
+				nextset.start_author = post.author;
+				NEXT_POSTS(nextset);
+			}
+			i++;
+		}
+	} catch (err) {
+		_didIteratorError2 = true;
+		_iteratorError2 = err;
+	} finally {
+		try {
+			if (!_iteratorNormalCompletion2 && _iterator2["return"]) {
+				_iterator2["return"]();
+			}
+		} finally {
+			if (_didIteratorError2) {
+				throw _iteratorError2;
+			}
+		}
+	}
+};
+LATEST_POSTS.then(POSTS_FILTER)["catch"](function (e) {
+	return console.log(e);
+});
+	  
+	  
+	  
+	  
+	  
+	  
+    </script>
+
+	
+  </body>
+</html>
